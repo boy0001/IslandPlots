@@ -1,0 +1,7 @@
+name: IslandPlots
+main: com.boydti.island.Main
+version: 1.0.0
+description: PlotSquared IslandCraft hook
+authors: [Empire92]
+depend: [PlotSquared,IslandCraft]
+load: STARTUP
