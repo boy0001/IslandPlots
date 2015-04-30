@@ -25,6 +25,7 @@ public class IslandPlotGenerator extends PlotGenerator {
     @Override
     public void processSetup(SetupObject object) {
         object.setupManager = new IslandSetupManager();
+        object.type = 1;
     }
 
     private IslandPlotManager man = new IslandPlotManager();
