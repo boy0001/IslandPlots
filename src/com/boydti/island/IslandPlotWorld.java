@@ -12,8 +12,8 @@ public class IslandPlotWorld extends ClassicPlotWorld {
     @Override
     public ConfigurationNode[] getSettingNodes() {
         return new ConfigurationNode[] {
-            new ConfigurationNode("island-size", 2, "Island Size", Configuration.INTEGER, true),
-            new ConfigurationNode("ocean-size", 1, "Island Size", Configuration.INTEGER, true)
+            new ConfigurationNode("island-size", 4, "Island Size", Configuration.INTEGER, true),
+            new ConfigurationNode("ocean-size", 1, "Ocean Size", Configuration.INTEGER, true)
         };
     }
 }

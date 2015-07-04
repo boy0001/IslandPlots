@@ -3,6 +3,7 @@ package com.boydti.island;
 import java.util.List;
 
 import org.bukkit.World;
+
 import com.intellectualcrafters.plot.object.PlotGenerator;
 import com.intellectualcrafters.plot.object.PlotManager;
 import com.intellectualcrafters.plot.object.PlotPopulator;
@@ -12,6 +13,10 @@ import com.intellectualcrafters.plot.object.RegionWrapper;
 import com.intellectualcrafters.plot.object.SetupObject;
 
 public class IslandPlotGenerator extends PlotGenerator {
+
+    public IslandPlotGenerator(String world) {
+        super(world);
+    }
 
     @Override
     public void generateChunk(World arg0, RegionWrapper arg1, PseudoRandom arg2, int arg3, int arg4, BiomeGrid arg5) {
@@ -26,6 +31,7 @@ public class IslandPlotGenerator extends PlotGenerator {
     public void processSetup(SetupObject object) {
         object.setupManager = new IslandSetupManager();
         object.type = 1;
+        object.terrain = 3;
     }
 
     private IslandPlotManager man = new IslandPlotManager();

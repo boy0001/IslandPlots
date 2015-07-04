@@ -1,5 +1,6 @@
 package com.boydti.island;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 
-import com.intellectualcrafters.plot.PlotSquared;
+import com.intellectualcrafters.plot.PS;
 import com.intellectualcrafters.plot.config.ConfigurationNode;
 import com.intellectualcrafters.plot.object.SetupObject;
 import com.intellectualcrafters.plot.util.bukkit.BukkitSetupUtils;
@@ -22,9 +23,9 @@ public class IslandSetupManager extends BukkitSetupUtils {
         String world = object.world;
         String path = "worlds." + world;
         
-        PlotSquared.config.set(path + "." + "generator.type", object.type);
-        PlotSquared.config.set(path + "." + "generator.terrain", object.terrain);
-        PlotSquared.config.set(path + "." + "generator.plugin", "Island");
+        PS.get().config.set(path + "." + "generator.type", object.type);
+        PS.get().config.set(path + "." + "generator.terrain", object.terrain);
+        PS.get().config.set(path + "." + "generator.plugin", "IslandPlots");
         
         // FIXME parse object
         
@@ -34,21 +35,21 @@ public class IslandSetupManager extends BukkitSetupUtils {
         int plot_size = (int) settings[0].getValue() * 32;
         int road_size = (int) settings[1].getValue() * 32;
         
-        PlotSquared.config.set(path + "." + "plot.height", 0);
-        PlotSquared.config.set(path + "." + "plot.size", plot_size);
-        PlotSquared.config.set(path + "." + "plot.filling", Arrays.asList("0"));
-        PlotSquared.config.set(path + "." + "plot.floor", Arrays.asList("0"));
-        PlotSquared.config.set(path + "." + "wall.block", "0");
-        PlotSquared.config.set(path + "." + "wall.block_claimed", "0");
-        PlotSquared.config.set(path + "." + "wall.filling", "0");
-        PlotSquared.config.set(path + "." + "wall.height", 0);
-        PlotSquared.config.set(path + "." + "road.width", road_size);
-        PlotSquared.config.set(path + "." + "road.height", 0);
-        PlotSquared.config.set(path + "." + "road.block", "0");
-        PlotSquared.config.set(path + "." + "plot.bedrock", false);
+        PS.get().config.set(path + "." + "plot.height", 0);
+        PS.get().config.set(path + "." + "plot.size", plot_size);
+        PS.get().config.set(path + "." + "plot.filling", Arrays.asList("0"));
+        PS.get().config.set(path + "." + "plot.floor", Arrays.asList("0"));
+        PS.get().config.set(path + "." + "wall.block", "0");
+        PS.get().config.set(path + "." + "wall.block_claimed", "0");
+        PS.get().config.set(path + "." + "wall.filling", "0");
+        PS.get().config.set(path + "." + "wall.height", 0);
+        PS.get().config.set(path + "." + "road.width", road_size);
+        PS.get().config.set(path + "." + "road.height", 0);
+        PS.get().config.set(path + "." + "road.block", "0");
+        PS.get().config.set(path + "." + "plot.bedrock", false);
         
         try {
-            PlotSquared.config.save(PlotSquared.configFile);
+            PS.get().config.save(PS.get().configFile);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -77,7 +78,16 @@ public class IslandSetupManager extends BukkitSetupUtils {
         
         Main.islandConfig.set(path + "." + "island-generators" , gen_types);
         
-        Main.islandCraftPlugin.saveConfig();
+        PS.log("&aSaving IslandPlots configurtion!!!!!!!!!");
+        
+        try {
+            Main.islandConfig.save(new File(Main.islandCraftPlugin.getDataFolder() + File.separator + "config.yml"));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        Main.islandCraftPlugin.reloadConfig();
         
         if ((Bukkit.getPluginManager().getPlugin("Multiverse-Core") != null) && Bukkit.getPluginManager().getPlugin("Multiverse-Core").isEnabled()) {
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "mv create " + world + " normal");
