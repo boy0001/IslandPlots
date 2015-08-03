@@ -3,9 +3,7 @@ package com.boydti.island;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
@@ -13,7 +11,7 @@ import org.bukkit.WorldCreator;
 import com.intellectualcrafters.plot.PS;
 import com.intellectualcrafters.plot.config.ConfigurationNode;
 import com.intellectualcrafters.plot.object.SetupObject;
-import com.intellectualcrafters.plot.util.bukkit.BukkitSetupUtils;
+import com.plotsquared.bukkit.util.BukkitSetupUtils;
 
 public class IslandSetupManager extends BukkitSetupUtils {
     

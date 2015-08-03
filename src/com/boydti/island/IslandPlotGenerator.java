@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.bukkit.World;
 
-import com.intellectualcrafters.plot.object.PlotGenerator;
 import com.intellectualcrafters.plot.object.PlotManager;
-import com.intellectualcrafters.plot.object.PlotPopulator;
 import com.intellectualcrafters.plot.object.PlotWorld;
 import com.intellectualcrafters.plot.object.PseudoRandom;
 import com.intellectualcrafters.plot.object.RegionWrapper;
 import com.intellectualcrafters.plot.object.SetupObject;
+import com.plotsquared.bukkit.generator.BukkitPlotGenerator;
+import com.plotsquared.bukkit.generator.BukkitPlotPopulator;
 
-public class IslandPlotGenerator extends PlotGenerator {
+public class IslandPlotGenerator extends BukkitPlotGenerator {
 
     public IslandPlotGenerator(String world) {
         super(world);
@@ -42,7 +42,7 @@ public class IslandPlotGenerator extends PlotGenerator {
     }
 
     @Override
-    public List<PlotPopulator> getPopulators(String arg0) {
+    public List<BukkitPlotPopulator> getPopulators(String arg0) {
         return null;
     }
 
